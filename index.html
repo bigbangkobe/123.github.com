@@ -1,0 +1,40 @@
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="js/raphael-min.js" type="text/javascript"></script>
+    <script src="js/Cube.js" type="text/javascript"></script>
+    <script src="js/Game.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        window.addEventListener("load",function () {
+            var soundEffect = new Audio();
+            soundEffect.src = "music/song.mp3"
+            soundEffect.preload = true;
+            soundEffect.load();
+            var timer =  setInterval(function(){
+                if(soundEffect.readyState==4)//可用数据足以开始播放
+                {
+                    soundEffect.play();//播放音乐
+                }
+            },1000);
+            paper = Raphael(document.getElementById("gameboard"),720,805);
+            game = new Game();
+        });
+        window.addEventListener('keydown', doKeyDown, true); //键盘响应
+        function doKeyDown(e) {
+            var keyID = e.keyCode ? e.keyCode :e.which;
+            if(keyID === 68)  { // right arrow and D
+                console.log("down");
+                game.doKeyDown(keyID);
+            }
+            if(keyID === 65)  { // left arrow and A
+                console.log("down");
+                game.doKeyDown(keyID);
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="gameboard" />
+</body>
+</html>
